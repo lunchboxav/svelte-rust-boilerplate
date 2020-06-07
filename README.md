@@ -17,3 +17,7 @@ Client app will run in port 8080.
 # Build
 
 TODO
+
+# Ideas
+
+Feel free to contribute to the project by writing issues or PR. I'm  maintaining this on my free time to answer some personal questions, so would love to collaborate with like minded people 😄
