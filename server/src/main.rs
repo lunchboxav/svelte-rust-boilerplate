@@ -11,6 +11,8 @@ async fn main() {
     let cors = warp::cors()
         .allow_any_origin();
 
+    // The following code is taken from Warp routing example, with some example removed
+
     // We'll start simple, and gradually show how you combine these powers
     // into super powers!
 
@@ -42,26 +44,6 @@ async fn main() {
     let _sum = math.and(sum);
     let _times = math.and(times);
 
-    // What! And? What's that do?
-    //
-    // It combines the filters in a sort of "this and then that" order. In
-    // fact, it's exactly what the `path!` macro has been doing internally.
-    //
-    // GET /bye/:string
-    let bye = warp::path("bye")
-        .and(warp::path::param())
-        .map(|name: String| format!("Good bye, {}!", name));
-
-    // Ah, can filters do things besides `and`?
-    //
-    // Why, yes they can! They can also `or`! As you might expect, `or` creates
-    // a "this or else that" chain of filters. If the first doesn't succeed,
-    // then it tries the other.
-    //
-    // So, those `math` routes could have been mounted all as one, with `or`.
-    //
-    // GET /math/sum/:u32/:u32
-    // GET /math/:u16/times/:u16
     let math = warp::path("math").and(sum.or(times));
 
     // We can use the end() filter to match a shorter path
@@ -77,23 +59,9 @@ async fn main() {
     let times =
         times.map(|output| format!("(This route has moved to /math/:u16/times/:u16) {}", output));
 
-    // It turns out, using `or` is how you combine everything together into
-    // a single API. (We also actually haven't been enforcing the that the
-    // method is GET, so we'll do that too!)
-    //
-    // GET /hi
-    // GET /hello/from/warp
-    // GET /bye/:string
-    // GET /math/sum/:u32/:u32
-    // GET /math/:u16/times/:u16
-
-    let routes = warp::get().and(hi.or(hello_from_warp).or(bye).or(math).or(sum).or(times)).with(cors);
-
-    // Note that composing filters for many routes may increase compile times (because it uses a lot of generics).
-    // If you wish to use dynamic dispatch instead and speed up compile times while
-    // making it slightly slower at runtime, you can use Filter::boxed().
+    let routes = warp::get().and(hi.or(hello_from_warp).or(math).or(sum).or(times)).with(cors);
 
     println!("Server is running in port {}", server_port);
-    
+
     warp::serve(routes).run(([127, 0, 0, 1], server_port)).await;
 }
