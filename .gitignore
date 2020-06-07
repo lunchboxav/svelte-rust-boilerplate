@@ -3,3 +3,4 @@
 /client/web_modules
 /client/node_modules
 /server/target
+node_modules
