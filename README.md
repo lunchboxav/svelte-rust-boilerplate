@@ -1,6 +1,6 @@
 # svelte-rust-boilerplate
 
-A quick boilerplate to write Svelte app using Warp, a Rust web framework as the backend. The Svelte app is bundled with Snowpack. It also uses Snowpack's dev proxy capability to proxy request during development to dev server.
+A quick boilerplate to write [Svelte](https://svelte.dev/) app using [Warp](https://github.com/seanmonstar/warp), a Rust web framework as the backend. The Svelte app is bundled with [Snowpack](https://www.snowpack.dev/). It also uses Snowpack's dev proxy capability to proxy request during development to dev server.
 
 # Development
 
