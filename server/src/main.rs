@@ -59,7 +59,9 @@ async fn main() {
     let times =
         times.map(|output| format!("(This route has moved to /math/:u16/times/:u16) {}", output));
 
-    let routes = warp::get().and(hi.or(hello_from_warp).or(math).or(sum).or(times)).with(cors);
+    let static_file = warp::path("static").and(warp::fs::dir("../client"));
+
+    let routes = warp::get().and(hi.or(hello_from_warp).or(math).or(sum).or(times).or(static_file)).with(cors);
 
     println!("Server is running in port {}", server_port);
 
