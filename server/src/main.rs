@@ -6,6 +6,8 @@ use warp::Filter;
 async fn main() {
     pretty_env_logger::init();
 
+    let server_port = 3030;
+
     let cors = warp::cors()
         .allow_any_origin();
 
@@ -91,5 +93,7 @@ async fn main() {
     // If you wish to use dynamic dispatch instead and speed up compile times while
     // making it slightly slower at runtime, you can use Filter::boxed().
 
-    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
+    println!("Server is running in port {}", server_port);
+    
+    warp::serve(routes).run(([127, 0, 0, 1], server_port)).await;
 }

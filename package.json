@@ -1,0 +1,13 @@
+{
+  "name": "svelte-rust",
+  "version": "1.0.0",
+  "description": "svelte and rust boilerplate",
+  "main": "index.js",
+  "repository": "git@github.com:lunchboxav/svelte-rust-boilerplate.git",
+  "author": "Adityo Pratomo <adityo@tetrate.io>",
+  "license": "MIT",
+  "scripts": {
+    "dev:server": "(cd server && cargo run)",
+    "dev:client": "(cd client && npm run start)"
+  }
+}

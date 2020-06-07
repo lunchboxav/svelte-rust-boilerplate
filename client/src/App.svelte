@@ -6,7 +6,7 @@
   let expression;
 
   onMount(async () => {
-    await fetch(`http://localhost:3030/math/sum/65/11`)
+    await fetch(`/api/math/sum/65/11`)
       .then(res => res.text())
       .then(body => expression = body)
       .catch(err => {
