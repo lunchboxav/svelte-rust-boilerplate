@@ -2,6 +2,17 @@
 
 A quick boilerplate to write [Svelte](https://svelte.dev/) app using [Warp](https://github.com/seanmonstar/warp), a Rust web framework as the backend. The Svelte app is bundled with [Snowpack](https://www.snowpack.dev/). It also uses Snowpack's dev proxy capability to proxy request during development to dev server.
 
+# Installation
+
+Install [Rust](https://rustup.rs), and [node](https://nodejs.org). 
+To install dependencies for client, go to client folder and run 
+
+```
+npm install
+```
+
+For server, no separate command is required.
+
 # Development
 
 To run the code in development, execute the following command
