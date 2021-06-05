@@ -1,8 +1,0 @@
-{
-  "extends": "@snowpack/app-scripts-svelte",
-  "scripts": {},
-  "plugins": [],
-  "proxy": {
-    "/api": "http://localhost:3030"
-  }
-}

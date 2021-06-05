@@ -1,0 +1,38 @@
+import proxy from 'http2-proxy';
+
+/** @type {import("snowpack").SnowpackUserConfig } */
+export default {
+  mount: {
+    public: {url: '/', static: true},
+    src: {url: '/dist'},
+  },
+  plugins: ['@snowpack/plugin-svelte', '@snowpack/plugin-dotenv'],
+  routes: [
+    /* Example: Enable an SPA Fallback in development: */
+    // {"match": "routes", "src": ".*", "dest": "/index.html"},
+    {
+      src: '/api/.*',
+      dest: (req, res) => {
+        req.url = req.url.replace(/^\/api/, '');
+
+        return proxy.web(req, res, {
+          hostname: 'localhost',
+          port: 3030,
+        });
+      }
+    }
+  ],
+  optimize: {
+    /* Example: Bundle your final build: */
+    // "bundle": true,
+  },
+  packageOptions: {
+    /* ... */
+  },
+  devOptions: {
+    /* ... */
+  },
+  buildOptions: {
+    /* ... */
+  },
+};

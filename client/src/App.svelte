@@ -1,9 +1,6 @@
 <script>
-  import { onMount } from "svelte";
-
-  const message = "Learn Svelte";
-
-  let expression;
+  import {onMount} from 'svelte';
+  let expression = "";
 
   onMount(async () => {
     await fetch(`/api/math/sum/65/11`)
@@ -24,6 +21,15 @@
   .App {
     text-align: center;
   }
+  .App code {
+    background: #0002;
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+  .App p {
+    margin: 0.4rem;
+  }
+
   .App-header {
     background-color: #f9f6f6;
     color: #333;
@@ -38,12 +44,12 @@
     color: #ff3e00;
   }
   .App-logo {
-    height: 40vmin;
+    height: 36vmin;
     pointer-events: none;
-    margin-bottom: 1rem;
-    animation: App-logo-spin infinite 1.6s ease-in-out alternate;
+    margin-bottom: 3rem;
+    animation: App-logo-pulse infinite 1.6s ease-in-out alternate;
   }
-  @keyframes App-logo-spin {
+  @keyframes App-logo-pulse {
     from {
       transform: scale(1);
     }
@@ -56,18 +62,12 @@
 <div class="App">
   <header class="App-header">
     <img src="/logo.svg" class="App-logo" alt="logo" />
+    <p>Edit <code>src/App.svelte</code> and save to reload.</p>
+    <p>Here's a simple math from our server: {expression}</p>
     <p>
-      Edit
-      <code>src/App.svelte</code>
-      and save to reload.
+      <a class="App-link" href="https://svelte.dev" target="_blank" rel="noopener noreferrer">
+        Learn Svelte
+      </a>
     </p>
-    <a
-      class="App-link"
-      href="https://svelte.dev"
-      target="_blank"
-      rel="noopener noreferrer">
-      {message}
-    </a>
-		<p>{expression}</p>
   </header>
 </div>
