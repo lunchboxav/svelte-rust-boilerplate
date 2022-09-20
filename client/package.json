@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "http2-proxy": "^5.0.53",
-    "svelte": "^3.37.0"
+    "svelte": "^3.49.0"
   },
   "devDependencies": {
     "@snowpack/plugin-dotenv": "^2.1.0",
