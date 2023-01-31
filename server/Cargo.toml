@@ -8,5 +8,5 @@ edition = "2018"
 
 [dependencies]
 tokio = { version = "1.8", features = ["macros"] }
-warp = "0.2"
+warp = "0.3"
 pretty_env_logger = "*"
